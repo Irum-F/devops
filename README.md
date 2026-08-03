@@ -1,1 +1,1 @@
-# Git Lab
+# Simple Bash projects
