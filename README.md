@@ -1,1 +1,1 @@
-# Simple Bash projects
+# My simple Bash projects and DevOps journey
