@@ -1,1 +1,1 @@
-# My simple Bash projects to document my learning
+# This repo showcases my DevOps learning projects at CoderCo

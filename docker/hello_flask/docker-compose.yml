@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    image: 048568674137.dkr.ecr.ap-south-1.amazonaws.com/flask-mysql:latest
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mydb
+
+  mydb:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
