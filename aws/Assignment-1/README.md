@@ -54,7 +54,7 @@ Both route tables also carry the implicit `10.0.0.0/16 → local` route AWS adds
 
 ## Security group design
 
-`sg-private`'s only inbound rule sources traffic from `sg-public` itself, rather than a specific IP or CIDR block. That means SSH access to the private instance is granted to whatever has `sg-public` attached, not to a specific address that would break if the public instance were ever replaced.
+sg-private's only inbound rule sources traffic from `sg-public` itself, rather than a specific IP or CIDR block. That means SSH access to the private instance is granted to whatever has `sg-public` attached, not to a specific address that would break if the public instance were ever replaced.
 
 ## Testing performed
 
