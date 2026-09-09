@@ -101,4 +101,4 @@ sg-private's only inbound rule sources traffic from `sg-public` itself, rather t
 
 ## Cleanup
 
-The NAT Gateway and its Elastic IP are billable while running (roughly $0.045/hr plus data processing for the NAT Gateway, and the EIP bills once it's unattached). Once this documentation is captured, deleted the NAT Gateway and release the Elastic IP — the VPC, subnets, route tables, IGW, security groups, and a stopped/terminated EC2 instance.
+The NAT Gateway and its Elastic IP are billable while running (roughly $0.045/hr plus data processing for the NAT Gateway, and the EIP bills once it's unattached). Once this documentation is captured, delete the NAT Gateway and release the Elastic IP — the VPC, subnets, route tables, IGW, security groups, and a stopped/terminated EC2 instance.
