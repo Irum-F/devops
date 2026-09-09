@@ -8,7 +8,8 @@ Create a custom VPC with a public and a private subnet, set up correct routing f
 
 ## Region
 
-`ap-south-1` (Asia Pacific — Mumbai)
+`ap-south-1` (Asia Pacific — Mumbai) — a single region.
+Everything below spans **two Availability Zones** within it (`ap-south-1a` and `ap-south-1b`), which is an AWS requirement for an internet-facing ALB, not a second region.
 
 ## Architecture
 
