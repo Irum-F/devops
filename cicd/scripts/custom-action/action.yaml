@@ -1,0 +1,17 @@
+name: Custom action
+
+description: This is a custom action greets someone and records the time.
+
+inputs:
+  who-to-greet:
+    description: Who to greet
+    required: true
+    default: Hello
+
+outputs:
+  time:
+    description: The time greeted
+
+runs:
+  using: node20
+  main: index.js

@@ -1,0 +1,49 @@
+# name: My manual workflow
+
+# on:
+#   push:
+#   workflow_dispatch:
+#     inputs:
+#       python-version:
+#         description: "Choose Python version"
+#         required: true
+#         default: "3.8"
+#         type: choice
+#         options:
+#           - "3.8"
+#           - "3.9"
+#           - "3.10"
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         python-version: ['${{ github.event.inputs.python-version }}']
+#         # python-version: [3.8, 3.9, "3.10"]
+
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
+#     - name: Set up Python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: ${{ matrix.python-version }}
+
+#     - name: Install dependencies
+#       run: |
+#         cd matrix
+#         python -m pip install --upgrade pip
+#         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+#     - name: Run tests
+#       run: |
+#         cd matrix
+#         python -m unittest discover
+#       if: success()
+
+#     - name: Notify success
+#       run: echo "Tests passed on Python ${{ matrix.python-version }}"
+#       if: success() 
