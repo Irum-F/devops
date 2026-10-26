@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/Irum-F/devops.git'
     targetRevision: HEAD
-    path: apps
+    path: kubernetes/eks-terraform/apps
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: apps
