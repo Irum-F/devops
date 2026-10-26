@@ -1,0 +1,15 @@
+global:
+  domain: argocd.lab.irum.dev
+
+# argocd-server serves plain HTTP; ingress-nginx terminates HTTPS in front of it
+configs:
+  params:
+    server.insecure: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      cert-manager.io/cluster-issuer: issuer
+    tls: true

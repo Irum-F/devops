@@ -1,3 +1,8 @@
+# Look up the hosted zone so its ID is never hardcoded
+data "aws_route53_zone" "lab" {
+  name = local.domain
+}
+
 # Cert manager IRSA (IAM Role for Service Account)
 
 module "cert_manager_irsa_role" {
@@ -5,7 +10,7 @@ module "cert_manager_irsa_role" {
   version                       = "5.2.0"
   role_name                     = "cert-manager"
   attach_cert_manager_policy    = true
-  cert_manager_hosted_zone_arns = ["arn:aws:route53:::hostedzone/${local.domain}"]
+  cert_manager_hosted_zone_arns = [data.aws_route53_zone.lab.arn]
 
   oidc_providers = {
     eks = {
@@ -13,6 +18,7 @@ module "cert_manager_irsa_role" {
       namespace_service_accounts = ["cert-manager:cert-manager"]
     }
   }
+
   tags = local.tags
 }
 
@@ -23,11 +29,14 @@ module "external_dns_irsa_role" {
   version                       = "5.2.0"
   role_name                     = "external-dns"
   attach_external_dns_policy    = true
-  external_dns_hosted_zone_arns = ["arn:aws:route53:::hostedzone/${local.domain}"]
+  external_dns_hosted_zone_arns = [data.aws_route53_zone.lab.arn]
+
   oidc_providers = {
     eks = {
       provider_arn               = module.eks.oidc_provider_arn
       namespace_service_accounts = ["external-dns:external-dns"]
     }
   }
+
+  tags = local.tags
 }
