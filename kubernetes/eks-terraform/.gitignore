@@ -1,0 +1,49 @@
+# Terraform working directory (providers and modules, re-downloaded by `terraform init`)
+.terraform/
+
+# Terraform state: contains resource IDs and secrets in plain text
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Saved plans
+*.tfplan
+tfplan
+
+# Variable files usually hold environment-specific or secret values
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Local overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI config (can contain API tokens)
+.terraformrc
+terraform.rc
+
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+credentials
+.aws/
+yaml-files/
+
+# Kubernetes configs
+kubeconfig
+*.kubeconfig
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

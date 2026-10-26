@@ -1,0 +1,16 @@
+provider: aws
+
+env:
+- name: AWS_DEFAULT_REGION
+  value: ap-south-1
+
+policy: sync
+registry: txt
+txtOwnerId: eks-lab
+
+sources:
+  - service
+  - ingress
+
+domainFilters:
+- lab.irum.dev
