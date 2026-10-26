@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: the-app-hub
+  labels:
+    app: the-app-hub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: the-app-hub
+  template:
+    metadata:
+      labels:
+        app: the-app-hub
+    spec:
+      containers:
+      - name: the-app-hub
+        image: moabukar/the-app-hub:22e0324
+        ports:
+        - containerPort: 3000
+
+___
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: the-app-hub
+spec:
+  selector:
+    app: the-app-hub
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  - name: app-port
+    protocol: TCP
+    port: 8086
+    targetPort: 3000
+
+___
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: the-app-hub-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "issuer"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: the-app-hub.lab.irum.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: the-app-hub
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - the-app-hub.lab.irum.dev
+    secretName: the-app-hub-tls
